@@ -8,7 +8,9 @@
       mac-option-modifier 'super)
 
 (tool-bar-mode -1)
-(setq display-line-numbers 'relative)
+
+(setq display-line-numbers-type 'relative)
+(global-display-line-numbers-mode)
 
 (setq package-archives '(("gnu" . "https://mirrors.bfsu.edu.cn/elpa/gnu/")
 			  ("melpa" . "https://mirrors.bfsu.edu.cn/elpa/melpa/")
