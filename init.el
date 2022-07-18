@@ -48,6 +48,11 @@
 
 (use-package magit)
 
+(add-to-list 'exec-path "/opt/local/bin")
+
+(use-package geiser-chez)
+(use-package paredit)
+
 (use-package lsp-mode
   :commands (lsp)
   :hook ((python-mode . lsp))
@@ -76,7 +81,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(lsp-ui lsp-mode use-package)))
+ '(package-selected-packages '(paredit geiser-chez lsp-ui lsp-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
