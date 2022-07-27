@@ -2,6 +2,8 @@
 (require 'package)
 (package-initialize)
 
+(set-language-environment 'utf-8)
+
 (setq mac-command-modifier 'meta
       mac-option-modifier 'super)
 
