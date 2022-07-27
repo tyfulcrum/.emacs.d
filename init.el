@@ -2,8 +2,6 @@
 (require 'package)
 (package-initialize)
 
-(setenv "LIBRARY_PATH"
-	"/opt/local/lib/gcc11:/opt/local/lib/libgcc:/opt/local/lib/gcc11/gcc/x86_64-apple-darwin21/11.3.0")
 (setq mac-command-modifier 'meta
       mac-option-modifier 'super)
 
@@ -37,7 +35,7 @@
 	     :config
 	     (setq company-tooltip-align-annotations t
 		   company-tooltip-limit 20
-		   company-show-numbers t
+		   company-show-quick-access t
 		   company-idle-delay .2
 		   company-minimum-prefix-length 1
 		   ))
@@ -78,12 +76,24 @@
 	     lsp-ui-doc-enable t
 	     lsp-lens-enable t))
 
+(use-package ccls
+  :config
+  (setq ccls-executable "/usr/local/bin/ccls")
+  :hook ((c-mode c++-mode) .
+	 (lambda () (require 'ccls) (lsp))))
+
+(use-package lab-themes
+  :config
+  (load-theme 'lab-dark t)
+  )
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(paredit geiser-chez lsp-ui lsp-mode use-package)))
+ '(package-selected-packages
+   '(lab-themes ccls paredit geiser-chez lsp-ui lsp-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
