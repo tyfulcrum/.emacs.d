@@ -84,10 +84,16 @@
   :hook ((c-mode c++-mode) .
 	 (lambda () (require 'ccls) (lsp))))
 
+(use-package vterm)
+
 (use-package lab-themes
   :config
   (load-theme 'lab-dark t)
   )
+
+(set-face-attribute 'default nil :height 140)
+(when (member "Sarasa Mono TC" (font-family-list))
+  (set-frame-font "Sarasa Mono TC" t t))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -95,7 +101,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(lab-themes ccls paredit geiser-chez lsp-ui lsp-mode use-package)))
+   '(vterm lab-themes ccls paredit geiser-chez lsp-ui lsp-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
