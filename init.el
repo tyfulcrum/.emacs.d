@@ -9,6 +9,10 @@
 
 (tool-bar-mode -1)
 
+(setq org-startup-indented t)
+
+(global-visual-line-mode 1)
+
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode)
 
@@ -86,6 +90,33 @@
 
 (use-package vterm)
 
+(use-package ctrlf
+  :config
+  (ctrlf-mode t))
+
+(use-package helm-swoop
+  :bind
+  (("M-i" . helm-swoop)
+   ("M-I" . 'helm-swoop-back-to-last-point))
+  :config
+  (setq helm-multi-swoop-edit-save t)
+  (setq helm-swoop-split-with-multiple-windows t)
+  (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+  (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
+  (define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
+  (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
+  (define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
+  (define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
+  )
+
+(use-package avy
+  :bind (("C-'" . avy-goto-char-timer)
+	 ("C-c C-j" . avy-resume))
+  :config
+  (setq avy-background t
+	avy-all-windows t
+	avy-timeout-seconds 0.3))
+
 (use-package lab-themes
   :config
   (load-theme 'lab-dark t)
@@ -101,7 +132,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(vterm lab-themes ccls paredit geiser-chez lsp-ui lsp-mode use-package)))
+   '(avy helm-swoop vterm lab-themes ccls paredit geiser-chez lsp-ui lsp-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
